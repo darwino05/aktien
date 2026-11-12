@@ -684,7 +684,9 @@
     ].map(([k, v, d]) => `<div class="tile"><div class="k">${k}</div><div class="v">${esc(v)}</div><div class="d">${esc(d)}</div></div>`).join('');
 
     const opps = [...valid].filter((s) => s.plan.signal.code !== 'meiden').sort((a, b) => b.plan.priority - a.plan.priority).slice(0, 6);
-    $('#opps').innerHTML = opps.length ? opps.map(oppCard).join('') : '<div class="empty card">Gerade keine Chancen – alle Werte stehen auf „Nicht kaufen“.</div>';
+    $('#opps').innerHTML = opps.length ? opps.map(oppCard).join('')
+      : !valid.length && st.length ? '<div class="empty card">Kaufpläne werden berechnet, sobald die Kurshistorie geladen ist (siehe Hinweis oben).</div>'
+      : '<div class="empty card">Gerade keine Chancen – alle Werte stehen auf „Nicht kaufen“.</div>';
 
     const earn = st.filter((s) => s.earnings?.next?.date).sort((a, b) => a.earnings.next.date.localeCompare(b.earnings.next.date));
     $('#earn-list').innerHTML = earn.length ? earn.map((s) => {
@@ -1097,6 +1099,10 @@
     const d = S.data;
     $('#upd').textContent = `Kurse ${timeDe(d.quotesUpdatedAt)} · Kennzahlen ${timeDe(d.fundamentalsUpdatedAt)}`;
     if (d.demo) { $('#banner').hidden = false; $('#banner').textContent = 'Beispieldaten – echte Werte erscheinen nach dem nächsten Lauf der GitHub Action.'; }
+    else if ((d.stocks || []).length && !(d.stocks || []).some((s) => s.tech)) {
+      $('#banner').hidden = false;
+      $('#banner').textContent = 'Kurshistorie fehlt – deshalb gibt es noch keine Kaufzonen, Stops und Signale. Abhilfe: kostenlosen Twelve-Data-Schlüssel als GitHub-Secret TWELVEDATA_API_KEY hinterlegen (siehe README). Score, Termine, Nachrichten und TradingView-Charts funktionieren bereits.';
+    }
     renderClocks(); renderOverview(); renderWatchlist(); renderPlans(); renderDepot(); renderBilanz();
     const ps = $('#pos-sym'); ps.innerHTML = '<option value="">— manuell —</option>' + (d.stocks || []).filter((s) => s.plan).map((s) => `<option value="${esc(s.symbol)}">${esc(s.symbol)}</option>`).join('');
   }

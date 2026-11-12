@@ -44,6 +44,9 @@ Regelbasiert, keine Prognose. Keine Anlageberatung.
 3. Diesen Stand auf `main` bringen (Zeitpläne laufen nur auf dem Standard-Branch).
 4. **Settings → Pages → Deploy from a branch → `main` / `(root)`**.
 5. **Actions → Daten aktualisieren → Run workflow** (Umfang `full`) für den ersten echten Lauf.
+6. **Für Kaufpläne (Kurshistorie):** kostenlosen Schlüssel auf twelvedata.com holen (Basic-Tarif,
+   800 Abrufe/Tag) und als zweites Secret `TWELVEDATA_API_KEY` anlegen. Stooq und Yahoo werden
+   zuerst versucht, blockieren aber Anfragen von GitHub-Servern (HTTP 403/429).
 
 Hinweis: GitHub Pages aus einem *privaten* Repo braucht GitHub Pro/Team. Bei einem
 öffentlichen Repo ist der Schlüssel trotzdem sicher, aber Watchlist und `data.json` sind
