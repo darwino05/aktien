@@ -4,7 +4,7 @@ on:
   schedule:
     # Zeiten in UTC. Kurse: alle 2 Stunden an Börsentagen (07–21 UTC deckt Xetra und NYSE ab)
     - cron: '17 7-21/2 * * 1-5'
-    # Alles (Kennzahlen, Empfehlungen, Kursziel): 1x täglich vor Börsenstart
+    # Alles (Kennzahlen, Kursverlauf, Termine, Nachrichten): 1x täglich vor Börsenstart
     - cron: '43 4 * * 1-5'
   workflow_dispatch:
     inputs:
@@ -15,7 +15,7 @@ on:
         default: full
   push:
     branches: [main]
-    paths: [watchlist.txt]
+    paths: [watchlist.txt, 'scripts/**']
 
 permissions:
   contents: write
@@ -29,11 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Modus bestimmen
         id: mode
@@ -48,18 +48,19 @@ jobs:
           echo "mode=$MODE" >> "$GITHUB_OUTPUT"
 
       - name: Tests
-        run: node --test scripts/score.test.mjs
+        run: node --test scripts/score.test.mjs scripts/technicals.test.mjs
 
       - name: Daten holen
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
         run: node scripts/update.mjs "${{ steps.mode.outputs.mode }}"
 
-      - name: data.json committen
+      - name: Daten committen
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json
+          git add data.json history.json
           if git diff --cached --quiet; then echo "Keine Änderungen."; exit 0; fi
           git commit -m "Daten aktualisiert (${{ steps.mode.outputs.mode }})"
           for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done

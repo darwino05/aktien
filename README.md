@@ -1,14 +1,40 @@
 # Aktien-Radar
 
 Private Übersicht der eigenen Watchlist: Score 0–100 je Aktie, Einstufung
-(**Kaufkandidat** ≥ 70 · **Beobachten** 50–69 · **Meiden** < 50) und Begründung.
+(**Kaufkandidat** ≥ 70 · **Beobachten** 50–69 · **Meiden** < 50), Begründung und ein
+konkreter **Kaufplan** (Kaufzone, Limit, Stop-Loss, Ziele, Chance/Risiko, gültig bis, wann/wo handeln).
 
-- `index.html` – statische Seite, liest nur `data.json`
-- `data.json` – wird von der GitHub Action geschrieben (anfangs Beispieldaten)
+**Bereiche der Seite:** Übersicht (Kennzahlen, beste Chancen, Score-Ranking, Quartalstermine,
+Marktnachrichten) · Watchlist (sortierbare Tabelle) · Kaufplan (Orders je Aktie) · Markt
+(TradingView: Indizes, Wirtschaftskalender, S&P-500-Heatmap) · Mein Depot (Positionen, nur im
+Browser gespeichert) · Rechner (Positionsgröße, Sparplan) · Trefferbilanz (was aus den
+Kaufsignalen wurde) · So funktioniert's. Klick auf eine Aktie öffnet die Detailansicht mit
+eigenem Chart inkl. Kaufplan, TradingView-Chart, technischer Einschätzung, Quartalszahlen,
+Analysten, Insidern und Nachrichten.
+
+- `index.html` – statische Seite, liest nur `data.json` und `history.json`
+- `data.json` – wird von der GitHub Action geschrieben
+- `history.json` – Tagesschnappschuss (Kurs, Score, Signal) für Trefferbilanz und Score-Verlauf
 - `watchlist.txt` – deine Aktien, ein Symbol pro Zeile
-- `scripts/update.mjs` – holt Daten von Finnhub (Node ≥ 18, keine Abhängigkeiten)
-- `scripts/score.mjs` – Score-Berechnung, Tests in `scripts/score.test.mjs`
+- `scripts/update.mjs` – holt Daten (Node ≥ 18, keine Abhängigkeiten)
+- `scripts/score.mjs` – Score-Berechnung; `scripts/technicals.mjs` – Technik und Kaufplan; Tests in `scripts/*.test.mjs`
 - `.github/workflows/update.yml` – Zeitplan
+
+**Datenquellen:** Finnhub (Kurse, Kennzahlen, Empfehlungen, Quartalstermine und -überraschungen,
+Nachrichten, Insider-Stimmung), Yahoo Finance (2 Jahre Tageskurse, ohne Schlüssel), EZB über
+frankfurter.app (EUR/USD), TradingView-Widgets (im Browser, ohne Schlüssel).
+
+## Kaufplan (`scripts/technicals.mjs`)
+
+| Größe | Regel |
+|---|---|
+| Kaufzone | höchste Unterstützung unter dem Kurs (20/50/200-Tage-Linie oder Pivot-Tief der letzten ~6 Monate, max. 15 % entfernt) bis 1 ATR darunter |
+| Limit | Mitte der Kaufzone; gültig 4 Wochen, höchstens bis 1 Tag vor den nächsten Quartalszahlen |
+| Stop-Loss | ½ ATR unter der nächsten Unterstützung unter der Zone, sonst 1,5 ATR unter der Zone; max. 20 % unter Limit |
+| Ziel 1 / 2 | nächster Widerstand mit ≥ 1,5 R Abstand (sonst 2 R) / 3 R oder Analystenziel |
+| Signal | **Jetzt kaufen**: Score ≥ 70, Kurs in der Zone, kein Abwärtstrend · **Limit setzen**: Score ≥ 70, Kurs über der Zone · **Beobachten**: Score 50–69 · **Abwarten**: Quartalszahlen in ≤ 3 Tagen, RSI > 70 oder Abwärtstrend · **Nicht kaufen**: Score < 50 |
+
+Regelbasiert, keine Prognose. Keine Anlageberatung.
 
 ## Einrichtung
 
@@ -18,6 +44,9 @@ Private Übersicht der eigenen Watchlist: Score 0–100 je Aktie, Einstufung
 3. Diesen Stand auf `main` bringen (Zeitpläne laufen nur auf dem Standard-Branch).
 4. **Settings → Pages → Deploy from a branch → `main` / `(root)`**.
 5. **Actions → Daten aktualisieren → Run workflow** (Umfang `full`) für den ersten echten Lauf.
+6. **Für Kaufpläne (Kurshistorie):** kostenlosen Schlüssel auf twelvedata.com holen (Basic-Tarif,
+   800 Abrufe/Tag) und als zweites Secret `TWELVEDATA_API_KEY` anlegen. Stooq und Yahoo werden
+   zuerst versucht, blockieren aber Anfragen von GitHub-Servern (HTTP 403/429).
 
 Hinweis: GitHub Pages aus einem *privaten* Repo braucht GitHub Pro/Team. Bei einem
 öffentlichen Repo ist der Schlüssel trotzdem sicher, aber Watchlist und `data.json` sind
@@ -28,8 +57,8 @@ sichtbar. Die Seite setzt `noindex`, ist aber nicht passwortgeschützt.
 | Lauf | Wann | Aufrufe |
 |---|---|---|
 | Kurse | Mo–Fr 07:17–21:17 alle 2 h | 1 je Aktie, Score wird mit neuem Kurs neu gerechnet |
-| Alles | Mo–Fr 04:43 | bis 5 je Aktie (quote, stock/metric, stock/recommendation, stock/profile2, stock/price-target) |
-| Watchlist geändert | bei Push von `watchlist.txt` auf `main` | wie „Alles“ |
+| Alles | Mo–Fr 04:43 | ca. 8 Finnhub-Aufrufe je Aktie + 1 Yahoo-Abruf (≈ 9 s je Aktie) |
+| Watchlist/Skripte geändert | bei Push von `watchlist.txt` oder `scripts/**` auf `main` | wie „Alles“ |
 
 Das Skript drosselt auf < 60 Aufrufe/Minute und wiederholt bei HTTP 429.
 Die Seite zeigt „zuletzt aktualisiert“ getrennt für Kurse und Kennzahlen.
