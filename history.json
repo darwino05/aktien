@@ -1,1 +1,1 @@
-{"days":[{"d":"2026-11-12","s":{"AAPL":[357.34,65,null],"MSFT":[527.07,86,null],"NVDA":[165.27,94,null],"GOOGL":[299.75,86,null],"AMZN":[269.61,80,null],"META":[625.78,90,null],"ASML":[1519.67,78,null],"KO":[98.05,65,null]}}]}
+{"days":[{"d":"2026-11-12","s":{"AAPL":[357.05,65,"beobachten"],"MSFT":[528.2,86,"limit"],"NVDA":[164.31,94,"limit"],"GOOGL":[300.71,86,"limit"],"AMZN":[269.83,80,"limit"],"META":[624.97,90,"limit"],"ASML":[1512.33,78,"limit"],"KO":[98.28,65,"warten"]}}]}
