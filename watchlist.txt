@@ -1,0 +1,10 @@
+# Watchlist – ein Symbol pro Zeile (Finnhub-Schreibweise), # leitet einen Kommentar ein.
+# Gratis-Tarif: vor allem US-Werte. Nach dem Speichern startet automatisch ein vollständiges Update.
+AAPL
+MSFT
+NVDA
+GOOGL
+AMZN
+META
+ASML
+KO

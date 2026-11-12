@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Aktien-Radar</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --text: #16191d; --muted: #5d6670; --line: #e2e5e9;
+    --buy: #127a3e; --buy-bg: #e3f4ea; --watch: #8a5a00; --watch-bg: #fbf0d9; --avoid: #b42318; --avoid-bg: #fde8e6;
+    --up: #127a3e; --down: #b42318; --bar: #d9dde2; --accent: #2457c5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101215; --card: #181b20; --text: #e7e9ec; --muted: #9aa3ad; --line: #2a2f36;
+      --buy: #4cc27e; --buy-bg: #15301f; --watch: #e3b34f; --watch-bg: #33280f; --avoid: #f07167; --avoid-bg: #3a1714;
+      --up: #4cc27e; --down: #f07167; --bar: #2c3239; --accent: #7aa2f7;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
+  header h1 { margin: 0 0 4px; font-size: 1.6rem; }
+  .meta { color: var(--muted); font-size: .9rem; }
+  .meta span + span::before { content: " · "; }
+  .banner { margin: 16px 0 0; padding: 10px 14px; border-radius: 8px; background: var(--watch-bg); color: var(--watch); }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 20px 0 12px; }
+  .chip { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px;
+    padding: 6px 12px; font: inherit; font-size: .9rem; cursor: pointer; }
+  .chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  .chip b { font-variant-numeric: tabular-nums; }
+  .toolbar .spacer { flex: 1; }
+  select { font: inherit; font-size: .9rem; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--card); color: var(--text); }
+  .list { display: grid; gap: 10px; }
+  details.stock { background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+  details.stock > summary { list-style: none; cursor: pointer; padding: 14px 16px;
+    display: grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items: center; }
+  details.stock > summary::-webkit-details-marker { display: none; }
+  .score { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
+    font-weight: 700; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+  .r-Kaufkandidat .score { background: var(--buy-bg); color: var(--buy); }
+  .r-Beobachten .score { background: var(--watch-bg); color: var(--watch); }
+  .r-Meiden .score { background: var(--avoid-bg); color: var(--avoid); }
+  .r-none .score { background: var(--bar); color: var(--muted); }
+  .title { min-width: 0; }
+  .title .sym { font-weight: 700; }
+  .title .name { color: var(--muted); margin-left: 6px; }
+  .title .why { margin: 2px 0 0; color: var(--muted); font-size: .9rem; }
+  .badge { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; font-size: .78rem; font-weight: 600; vertical-align: 1px; }
+  .r-Kaufkandidat .badge { background: var(--buy-bg); color: var(--buy); }
+  .r-Beobachten .badge { background: var(--watch-bg); color: var(--watch); }
+  .r-Meiden .badge { background: var(--avoid-bg); color: var(--avoid); }
+  .price { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .price .chg { font-size: .9rem; }
+  .up { color: var(--up); } .down { color: var(--down); }
+  .body { padding: 0 16px 16px; border-top: 1px solid var(--line); }
+  .areas { display: grid; gap: 14px; margin-top: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .area h3 { margin: 0 0 4px; font-size: .95rem; display: flex; justify-content: space-between; }
+  .area h3 small { font-weight: 600; font-variant-numeric: tabular-nums; }
+  .bar { height: 6px; border-radius: 3px; background: var(--bar); overflow: hidden; margin-bottom: 6px; }
+  .bar i { display: block; height: 100%; background: var(--accent); }
+  .area table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  .area td { padding: 2px 0; color: var(--muted); }
+  .area td:nth-child(2), .area td:nth-child(3) { text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
+  .area td:nth-child(3) { width: 68px; padding-left: 10px; color: var(--muted); white-space: nowrap; }
+  .missing { font-style: italic; color: var(--muted); font-size: .85rem; }
+  .foot { margin-top: 14px; font-size: .82rem; color: var(--muted); }
+  .err { color: var(--avoid); font-size: .85rem; margin-top: 4px; }
+  .empty { padding: 32px; text-align: center; color: var(--muted); }
+  footer { margin-top: 32px; font-size: .82rem; color: var(--muted); }
+  @media (max-width: 560px) {
+    details.stock > summary { grid-template-columns: 48px 1fr; }
+    .score { width: 48px; height: 48px; font-size: 1.1rem; }
+    .price { grid-column: 2; text-align: left; }
+    .title .name { display: block; margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Aktien-Radar</h1>
+    <div class="meta" id="meta">Lade Daten …</div>
+    <div class="banner" id="banner" hidden></div>
+  </header>
+
+  <div class="toolbar" id="toolbar" hidden>
+    <button class="chip" data-filter="all" aria-pressed="true">Alle <b id="n-all"></b></button>
+    <button class="chip" data-filter="Kaufkandidat" aria-pressed="false">Kaufkandidat <b id="n-Kaufkandidat"></b></button>
+    <button class="chip" data-filter="Beobachten" aria-pressed="false">Beobachten <b id="n-Beobachten"></b></button>
+    <button class="chip" data-filter="Meiden" aria-pressed="false">Meiden <b id="n-Meiden"></b></button>
+    <span class="spacer"></span>
+    <label>Sortierung
+      <select id="sort">
+        <option value="score">Score</option>
+        <option value="change">Tagesveränderung</option>
+        <option value="symbol">Symbol</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="list" id="list"></div>
+
+  <footer>
+    Score 0–100 aus fünf Bereichen à 20 Punkte: Bewertung, Wachstum, Qualität, Bilanz, Analysten.
+    ≥ 70 Kaufkandidat · 50–69 Beobachten · &lt; 50 Meiden. Daten: Finnhub. Keine Anlageberatung.
+  </footer>
+</main>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmtNum = (v, d = 2) => v == null ? '–' : v.toLocaleString('de-DE', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const fmtTime = (iso) => iso ? new Date(iso).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short' }) : '–';
+  const fmtPrice = (v, cur) => {
+    if (v == null) return '–';
+    try { return v.toLocaleString('de-DE', { style: 'currency', currency: cur || 'USD' }); }
+    catch { return fmtNum(v) + (cur ? ' ' + cur : ''); }
+  };
+
+  let data = null;
+  let filter = 'all';
+  try { filter = localStorage.getItem('radar-filter') || 'all'; } catch {}
+  let sort = 'score';
+  try { sort = localStorage.getItem('radar-sort') || 'score'; } catch {}
+
+  function areaHtml(a) {
+    const rows = a.parts.map((p) => `<tr><td>${esc(p.label)}</td><td>${esc(p.value)}</td><td>${p.points == null ? '' : fmtNum(p.points, 1) + '/' + p.max}</td></tr>`).join('');
+    return `<div class="area">
+      <h3>${esc(a.label)} <small>${fmtNum(a.points, 1)} / 20</small></h3>
+      <div class="bar"><i style="width:${(a.points / 20) * 100}%"></i></div>
+      ${a.missing ? '<div class="missing">Keine Daten – neutral bewertet</div>' : ''}
+      <table>${rows}</table>
+    </div>`;
+  }
+
+  function stockHtml(s) {
+    const q = s.quote || {};
+    const dir = q.change > 0 ? 'up' : q.change < 0 ? 'down' : '';
+    const sign = q.changePct > 0 ? '+' : '';
+    const ratingCls = s.rating ? 'r-' + s.rating : 'r-none';
+    const rec = s.fundamentals?.recommendation;
+    return `<details class="stock ${ratingCls}">
+      <summary>
+        <div class="score">${s.score ?? '–'}</div>
+        <div class="title">
+          <span class="sym">${esc(s.symbol)}</span><span class="name">${esc(s.name !== s.symbol ? s.name : '')}</span>
+          ${s.rating ? `<span class="badge">${esc(s.rating)}</span>` : ''}
+          <p class="why">${esc(s.summary || '')}</p>
+          ${s.error ? `<div class="err">Letztes Update fehlgeschlagen: ${esc(s.error)}</div>` : ''}
+        </div>
+        <div class="price">
+          <div>${fmtPrice(q.price, s.currency)}</div>
+          <div class="chg ${dir}">${q.changePct == null ? '' : sign + fmtNum(q.changePct) + ' %'}</div>
+        </div>
+      </summary>
+      ${s.areas ? `<div class="body">
+        <div class="areas">${s.areas.map(areaHtml).join('')}</div>
+        <div class="foot">
+          ${[s.industry, s.exchange].filter(Boolean).map(esc).join(' · ')}
+          ${rec ? ` · Empfehlungen ${esc(rec.period)}: ${rec.strongBuy} Strong Buy, ${rec.buy} Buy, ${rec.hold} Hold, ${rec.sell} Sell, ${rec.strongSell} Strong Sell` : ''}
+          · Kurs ${fmtTime(q.time)} · Kennzahlen ${fmtTime(s.fundamentalsUpdatedAt)}
+        </div>
+      </div>` : ''}
+    </details>`;
+  }
+
+  function render() {
+    const stocks = data.stocks || [];
+    for (const k of ['Kaufkandidat', 'Beobachten', 'Meiden']) $('n-' + k).textContent = stocks.filter((s) => s.rating === k).length;
+    $('n-all').textContent = stocks.length;
+    document.querySelectorAll('.chip').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === filter)));
+    $('sort').value = sort;
+
+    const shown = stocks
+      .filter((s) => filter === 'all' || s.rating === filter)
+      .sort((a, b) => {
+        if (sort === 'symbol') return a.symbol.localeCompare(b.symbol);
+        if (sort === 'change') return (b.quote?.changePct ?? -Infinity) - (a.quote?.changePct ?? -Infinity);
+        return (b.score ?? -1) - (a.score ?? -1);
+      });
+    $('list').innerHTML = shown.length ? shown.map(stockHtml).join('') : '<div class="empty">Keine Aktien in dieser Kategorie.</div>';
+  }
+
+  document.querySelectorAll('.chip').forEach((b) => b.addEventListener('click', () => {
+    filter = b.dataset.filter;
+    try { localStorage.setItem('radar-filter', filter); } catch {}
+    render();
+  }));
+  $('sort').addEventListener('change', (e) => {
+    sort = e.target.value;
+    try { localStorage.setItem('radar-sort', sort); } catch {}
+    render();
+  });
+
+  fetch('data.json', { cache: 'no-store' })
+    .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then((d) => {
+      data = d;
+      $('meta').innerHTML = `<span>Zuletzt aktualisiert: Kurse ${fmtTime(d.quotesUpdatedAt)}</span><span>Kennzahlen ${fmtTime(d.fundamentalsUpdatedAt)}</span>`
+        + (d.priceTargetAvailable === false ? '<span>Kursziel nicht im Tarif enthalten</span>' : '');
+      if (d.demo) { $('banner').hidden = false; $('banner').textContent = 'Beispieldaten – echte Werte erscheinen nach dem ersten Lauf der GitHub Action.'; }
+      $('toolbar').hidden = false;
+      render();
+    })
+    .catch((e) => { $('meta').textContent = 'data.json konnte nicht geladen werden (' + e.message + ').'; });
+})();
+</script>
+</body>
+</html>
