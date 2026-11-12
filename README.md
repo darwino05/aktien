@@ -1,0 +1,2 @@
+# aktien
+Automatische Aktien 
