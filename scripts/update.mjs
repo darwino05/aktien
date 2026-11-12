@@ -120,17 +120,85 @@ function toQuote(q) {
 /** Finnhub-Symbol → Yahoo-Symbol (BRK.B → BRK-B; SAP.DE bleibt). */
 const yahooSymbol = (s) => (/^[A-Z]+\.[A-Z]$/.test(s) ? s.replace('.', '-') : s);
 
-/** Tageskerzen der letzten 2 Jahre von Yahoo Finance (ohne Schlüssel). */
-async function fetchCandles(symbol) {
+// ---------- Kurshistorie: mehrere Quellen, die erste funktionierende gewinnt ----------
+// Quellen, die in diesem Lauf blockieren, werden für die restlichen Aktien übersprungen.
+const historyBlocked = new Set();
+const historyUsed = {};
+
+/** Stooq: Tageskurse als CSV, ohne Schlüssel. */
+async function candlesStooq(symbol) {
+  const s = /\.[A-Z]{1,3}$/.test(symbol) && !/^[A-Z]+\.[A-Z]$/.test(symbol)
+    ? symbol.toLowerCase()
+    : `${symbol.toLowerCase().replace('.', '-')}.us`;
+  const from = isoDay(Date.now() - 760 * 86400000).replaceAll('-', '');
+  const res = await fetch(`https://stooq.com/q/d/l/?s=${encodeURIComponent(s)}&i=d&d1=${from}`, { headers: { 'User-Agent': UA } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const text = (await res.text()).trim();
+  const lines = text.split('\n');
+  if (!/^Date,Open,High,Low,Close/i.test(lines[0])) throw new Error(`unerwartete Antwort: ${lines[0].slice(0, 60)}`);
+  const t = [], o = [], h = [], l = [], c = [], v = [];
+  for (const line of lines.slice(1)) {
+    const [d, op, hi, lo, cl, vo] = line.split(',');
+    if (!d || !cl) continue;
+    t.push(Date.parse(d + 'T21:00:00Z') / 1000); o.push(+op); h.push(+hi); l.push(+lo); c.push(+cl); v.push(vo ? +vo : null);
+  }
+  if (c.length < 60) throw new Error(`nur ${c.length} Tage`);
+  return { t, o, h, l, c, v };
+}
+
+/** Yahoo Finance mit Cookie + Crumb (wie gängige Bibliotheken), ohne Schlüssel. */
+let yahooAuth = null;
+async function yahooLogin() {
+  if (yahooAuth) return yahooAuth;
+  const r1 = await fetch('https://fc.yahoo.com/', { headers: { 'User-Agent': UA }, redirect: 'manual' });
+  const cookie = (r1.headers.getSetCookie?.() ?? []).map((c) => c.split(';')[0]).join('; ');
+  const r2 = await fetch('https://query2.finance.yahoo.com/v1/test/getcrumb', { headers: { 'User-Agent': UA, Cookie: cookie } });
+  const crumb = r2.ok ? (await r2.text()).trim() : '';
+  if (!crumb || crumb.includes('<')) throw new Error(`kein Crumb (HTTP ${r2.status})`);
+  return (yahooAuth = { cookie, crumb });
+}
+async function candlesYahoo(symbol) {
+  const { cookie, crumb } = await yahooLogin();
   const ys = encodeURIComponent(yahooSymbol(symbol));
-  for (const host of ['query1', 'query2']) {
+  const res = await fetch(`https://query2.finance.yahoo.com/v8/finance/chart/${ys}?range=2y&interval=1d&crumb=${encodeURIComponent(crumb)}`, { headers: { 'User-Agent': UA, Cookie: cookie } });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const r = (await res.json())?.chart?.result?.[0];
+  const q = r?.indicators?.quote?.[0];
+  if (!r?.timestamp?.length || !q) throw new Error('leere Antwort');
+  return { t: r.timestamp, o: q.open, h: q.high, l: q.low, c: q.close, v: q.volume };
+}
+
+/** Twelve Data (nur mit kostenlosem Schlüssel als Secret TWELVEDATA_API_KEY; 8 Abrufe/Minute). */
+let lastTwelve = 0;
+async function candlesTwelve(symbol) {
+  const key = process.env.TWELVEDATA_API_KEY;
+  if (!key) throw new Error('kein Schlüssel');
+  const wait = lastTwelve + 8000 - Date.now();
+  if (wait > 0) await sleep(wait);
+  lastTwelve = Date.now();
+  const res = await fetch(`https://api.twelvedata.com/time_series?symbol=${encodeURIComponent(symbol.replace(/\.DE$/, ''))}&interval=1day&outputsize=520&order=ASC`, { headers: { Authorization: `apikey ${key}` } });
+  const j = await res.json();
+  if (!Array.isArray(j.values)) throw new Error(j.message || `HTTP ${res.status}`);
+  const rows = j.values;
+  return {
+    t: rows.map((x) => Date.parse(x.datetime + 'T21:00:00Z') / 1000),
+    o: rows.map((x) => +x.open), h: rows.map((x) => +x.high), l: rows.map((x) => +x.low), c: rows.map((x) => +x.close), v: rows.map((x) => (x.volume ? +x.volume : null)),
+  };
+}
+
+const HISTORY_SOURCES = [['Stooq', candlesStooq], ['Yahoo', candlesYahoo], ['TwelveData', candlesTwelve]];
+
+async function fetchCandles(symbol) {
+  for (const [name, fn] of HISTORY_SOURCES) {
+    if (historyBlocked.has(name)) continue;
     try {
-      const j = await getJson(`https://${host}.finance.yahoo.com/v8/finance/chart/${ys}?range=2y&interval=1d&includePrePost=false`, 2);
-      const r = j?.chart?.result?.[0];
-      const q = r?.indicators?.quote?.[0];
-      if (r?.timestamp?.length && q) return { t: r.timestamp, o: q.open, h: q.high, l: q.low, c: q.close, v: q.volume };
+      const c = await fn(symbol);
+      historyUsed[name] = (historyUsed[name] || 0) + 1;
+      return c;
     } catch (e) {
-      console.warn(`  ${symbol}: Kurshistorie (${host}) ${e.message}`);
+      console.warn(`  ${symbol}: Kurshistorie ${name}: ${e.message}`);
+      // Sperren (429/403/Login) gelten für den ganzen Lauf; "Symbol unbekannt" nur für diese Aktie
+      if (/HTTP (401|403|429)|Crumb|Schlüssel|limit/i.test(e.message)) historyBlocked.add(name);
     }
   }
   return null;
@@ -261,6 +329,7 @@ async function main() {
         const quote = toQuote(await api('/quote', { symbol }));
         if (!quote) throw new Error('kein Kurs erhalten');
         entry = { ...prev, quote };
+        if (!prev.tech) entry.tech = computeTechnicals(await fetchCandles(symbol)); // fehlende Historie nachholen
       } else {
         entry = await fetchFull(symbol); // voll – oder neue Aktie im Kurs-Modus
       }
@@ -312,7 +381,10 @@ async function main() {
   history.days = history.days.filter((x) => x.d !== today).concat(snap).slice(-600);
   await writeFile(HISTORY_FILE, JSON.stringify(history) + '\n');
 
-  console.log(`Fertig: ${stocks.length} Aktien, ${failures} Fehler, ${calls} Finnhub-Aufrufe.`);
+  console.log(`Fertig: ${stocks.length} Aktien, ${failures} Fehler, ${calls} Finnhub-Aufrufe. Kurshistorie: ${JSON.stringify(historyUsed)}`);
+  if (mode === 'full' && symbols.length && !Object.keys(historyUsed).length) {
+    console.warn('::warning::Keine Kurshistorie erhalten – Kaufpläne fehlen. Optional kostenlosen Twelve-Data-Schlüssel als Secret TWELVEDATA_API_KEY hinterlegen.');
+  }
 }
 
 main().catch((e) => {

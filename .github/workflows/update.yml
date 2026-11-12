@@ -53,6 +53,7 @@ jobs:
       - name: Daten holen
         env:
           FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
         run: node scripts/update.mjs "${{ steps.mode.outputs.mode }}"
 
       - name: Daten committen
