@@ -1,791 +1,65 @@
 {
- "demo": true,
- "generatedAt": "2026-11-12T15:13:03.659Z",
- "quotesUpdatedAt": "2026-11-12T15:13:03.659Z",
- "fundamentalsUpdatedAt": "2026-11-12T15:12:28.372Z",
+ "generatedAt": "2026-11-12T16:29:51.294Z",
+ "quotesUpdatedAt": "2026-11-12T16:29:51.294Z",
+ "fundamentalsUpdatedAt": "2026-11-12T16:29:51.294Z",
  "priceTargetAvailable": false,
  "stocks": [
   {
    "symbol": "AAPL",
-   "name": "Beispielwerte",
+   "name": "Apple Inc.",
    "currency": "USD",
-   "exchange": null,
-   "industry": null,
-   "logo": null,
-   "weburl": null,
+   "exchange": "NASDAQ NMS - GLOBAL MARKET",
+   "industry": "Technology",
+   "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/AAPL.png",
+   "weburl": "https://www.apple.com/",
    "quote": {
-    "price": 146.4,
-    "change": -1.5459840000000002,
-    "changePct": -1.056,
-    "prevClose": 147.96248382923676,
-    "time": "2026-11-12T15:13:03.000Z"
+    "price": 358.05,
+    "change": 2.42,
+    "changePct": 0.6805,
+    "prevClose": 355.63,
+    "time": "2026-11-12T16:29:44.000Z"
    },
    "fundamentals": {
-    "priceAtFundamentals": 146.4,
-    "eps": 3.0591775325977935,
-    "peMetric": null,
-    "pfcf": 22.439999999999998,
-    "epsGrowth": 13.623999999999999,
-    "revenueGrowth": 28.007,
-    "netMargin": 31.799,
-    "roe": 58.68,
-    "netDebt": 105200,
-    "ebitda": 204918.03278688528,
-    "debtEquity": null,
+    "priceAtFundamentals": 358.05,
+    "eps": 8.974499999999999,
+    "peMetric": 38.9002,
+    "pfcf": 37.7906,
+    "epsGrowth": 13.54,
+    "revenueGrowth": 7.7,
+    "netMargin": 27.6,
+    "roe": 127.61,
+    "netDebt": 43806,
+    "ebitda": 170016.359328,
+    "debtEquity": 0.7147,
     "recommendation": {
      "period": "2026-11-01",
-     "strongBuy": 13,
-     "buy": 6,
-     "hold": 4,
-     "sell": 1,
-     "strongSell": 0
-    },
-    "targetMean": null
-   },
-   "fundamentalsUpdatedAt": "2026-11-12T15:12:32.783Z",
-   "score": 78,
-   "rating": "Kaufkandidat",
-   "areas": [
-    {
-     "key": "bewertung",
-     "label": "Bewertung",
-     "points": 5.6,
-     "missing": false,
-     "parts": [
-      {
-       "label": "KGV",
-       "value": "47,9",
-       "points": null
-      },
-      {
-       "label": "PEG",
-       "value": "3,51",
-       "points": 0,
-       "max": 10
-      },
-      {
-       "label": "FCF-Rendite",
-       "value": "4,5 %",
-       "points": 5.6,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "wachstum",
-     "label": "Wachstum",
-     "points": 15.4,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Umsatz p.a.",
-       "value": "28,0 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Gewinn p.a.",
-       "value": "13,6 %",
-       "points": 5.4,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "qualitaet",
-     "label": "Qualität",
-     "points": 20,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettomarge",
-       "value": "31,8 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Eigenkapitalrendite",
-       "value": "58,7 %",
-       "points": 10,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "bilanz",
-     "label": "Bilanz",
-     "points": 17.4,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettoverschuldung/EBITDA",
-       "value": "0,5",
-       "points": 17.4,
-       "max": 20
-      }
-     ]
-    },
-    {
-     "key": "analysten",
-     "label": "Analysten",
-     "points": 19.7,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Kaufempfehlungen",
-       "value": "79 % von 24",
-       "points": 9.9,
-       "max": 10
-      }
-     ]
-    }
-   ],
-   "summary": "Stark bei Wachstum, Qualität, Bilanz und Analysten. Schwach bei Bewertung.",
-   "metrics": {
-    "pe": 47.856,
-    "peg": 3.512624779800353,
-    "fcfYield": 4.456327985739751,
-    "netDebtEbitda": 0.5133759999999999,
-    "buyShare": 79.16666666666666,
-    "upside": null
-   }
-  },
-  {
-   "symbol": "MSFT",
-   "name": "Beispielwerte",
-   "currency": "USD",
-   "exchange": null,
-   "industry": null,
-   "logo": null,
-   "weburl": null,
-   "quote": {
-    "price": 457.76,
-    "change": 3.1310784000000007,
-    "changePct": 0.6840000000000002,
-    "prevClose": 454.65019268205475,
-    "time": "2026-11-12T15:13:04.000Z"
-   },
-   "fundamentals": {
-    "priceAtFundamentals": 457.76,
-    "eps": 33.228803716608596,
-    "peMetric": null,
-    "pfcf": 54.688,
-    "epsGrowth": 28.994,
-    "revenueGrowth": 1.737,
-    "netMargin": 44.269,
-    "roe": 44.765,
-    "netDebt": 192200,
-    "ebitda": 65536.52569031807,
-    "debtEquity": null,
-    "recommendation": {
-     "period": "2026-11-01",
-     "strongBuy": 2,
+     "strongBuy": 11,
      "buy": 19,
-     "hold": 12,
+     "hold": 15,
      "sell": 3,
-     "strongSell": 0
+     "strongSell": 1
     },
     "targetMean": null
    },
-   "fundamentalsUpdatedAt": "2026-11-12T15:12:37.188Z",
-   "score": 61,
+   "fundamentalsUpdatedAt": "2026-11-12T16:29:55.767Z",
+   "score": 65,
    "rating": "Beobachten",
    "areas": [
     {
      "key": "bewertung",
      "label": "Bewertung",
-     "points": 12.3,
+     "points": 3.6,
      "missing": false,
      "parts": [
       {
        "label": "KGV",
-       "value": "13,8",
+       "value": "39,9",
        "points": null
       },
       {
        "label": "PEG",
-       "value": "0,48",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "FCF-Rendite",
-       "value": "1,8 %",
-       "points": 2.3,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "wachstum",
-     "label": "Wachstum",
-     "points": 10.9,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Umsatz p.a.",
-       "value": "1,7 %",
-       "points": 0.9,
-       "max": 10
-      },
-      {
-       "label": "Gewinn p.a.",
-       "value": "29,0 %",
-       "points": 10,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "qualitaet",
-     "label": "Qualität",
-     "points": 20,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettomarge",
-       "value": "44,3 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Eigenkapitalrendite",
-       "value": "44,8 %",
-       "points": 10,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "bilanz",
-     "label": "Bilanz",
-     "points": 5.3,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettoverschuldung/EBITDA",
-       "value": "2,9",
-       "points": 5.3,
-       "max": 20
-      }
-     ]
-    },
-    {
-     "key": "analysten",
-     "label": "Analysten",
-     "points": 12.8,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Kaufempfehlungen",
-       "value": "58 % von 36",
-       "points": 6.4,
-       "max": 10
-      }
-     ]
-    }
-   ],
-   "summary": "Stark bei Qualität. Schwach bei Bilanz.",
-   "metrics": {
-    "pe": 13.776,
-    "peg": 0.47513278609367454,
-    "fcfYield": 1.8285547103569337,
-    "netDebtEbitda": 2.932715733333333,
-    "buyShare": 58.333333333333336,
-    "upside": null
-   }
-  },
-  {
-   "symbol": "NVDA",
-   "name": "Beispielwerte",
-   "currency": "USD",
-   "exchange": null,
-   "industry": null,
-   "logo": null,
-   "weburl": null,
-   "quote": {
-    "price": 534.48,
-    "change": -7.4720303999999995,
-    "changePct": -1.398,
-    "prevClose": 542.0579704265633,
-    "time": "2026-11-12T15:13:05.000Z"
-   },
-   "fundamentals": {
-    "priceAtFundamentals": 534.48,
-    "eps": 11.845744680851064,
-    "peMetric": null,
-    "pfcf": 62.634,
-    "epsGrowth": 10.602999999999998,
-    "revenueGrowth": 25.898,
-    "netMargin": 29.348,
-    "roe": 34.315,
-    "netDebt": 88100,
-    "ebitda": 56129.321957790744,
-    "debtEquity": null,
-    "recommendation": {
-     "period": "2026-11-01",
-     "strongBuy": 12,
-     "buy": 22,
-     "hold": 13,
-     "sell": 4,
-     "strongSell": 0
-    },
-    "targetMean": null
-   },
-   "fundamentalsUpdatedAt": "2026-11-12T15:12:41.595Z",
-   "score": 64,
-   "rating": "Beobachten",
-   "areas": [
-    {
-     "key": "bewertung",
-     "label": "Bewertung",
-     "points": 2,
-     "missing": false,
-     "parts": [
-      {
-       "label": "KGV",
-       "value": "45,1",
-       "points": null
-      },
-      {
-       "label": "PEG",
-       "value": "4,26",
-       "points": 0,
-       "max": 10
-      },
-      {
-       "label": "FCF-Rendite",
-       "value": "1,6 %",
-       "points": 2,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "wachstum",
-     "label": "Wachstum",
-     "points": 14.2,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Umsatz p.a.",
-       "value": "25,9 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Gewinn p.a.",
-       "value": "10,6 %",
-       "points": 4.2,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "qualitaet",
-     "label": "Qualität",
-     "points": 20,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettomarge",
-       "value": "29,3 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Eigenkapitalrendite",
-       "value": "34,3 %",
-       "points": 10,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "bilanz",
-     "label": "Bilanz",
-     "points": 12.2,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettoverschuldung/EBITDA",
-       "value": "1,6",
-       "points": 12.2,
-       "max": 20
-      }
-     ]
-    },
-    {
-     "key": "analysten",
-     "label": "Analysten",
-     "points": 15.6,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Kaufempfehlungen",
-       "value": "67 % von 51",
-       "points": 7.8,
-       "max": 10
-      }
-     ]
-    }
-   ],
-   "summary": "Stark bei Qualität und Analysten. Schwach bei Bewertung.",
-   "metrics": {
-    "pe": 45.12,
-    "peg": 4.2553994152598325,
-    "fcfYield": 1.5965769390426925,
-    "netDebtEbitda": 1.5695896000000003,
-    "buyShare": 66.66666666666666,
-    "upside": null
-   }
-  },
-  {
-   "symbol": "GOOGL",
-   "name": "Beispielwerte",
-   "currency": "USD",
-   "exchange": null,
-   "industry": null,
-   "logo": null,
-   "weburl": null,
-   "quote": {
-    "price": 154.8,
-    "change": -1.0774079999999997,
-    "changePct": -0.6959999999999997,
-    "prevClose": 155.88495931684525,
-    "time": "2026-11-12T15:13:06.000Z"
-   },
-   "fundamentals": {
-    "priceAtFundamentals": 154.8,
-    "eps": 3.051087984862819,
-    "peMetric": null,
-    "pfcf": 23.310000000000002,
-    "epsGrowth": 16.804000000000002,
-    "revenueGrowth": 30.226999999999997,
-    "netMargin": 34.379,
-    "roe": 27.220000000000002,
-    "netDebt": 123200,
-    "ebitda": 193798.44961240308,
-    "debtEquity": null,
-    "recommendation": {
-     "period": "2026-11-01",
-     "strongBuy": 13,
-     "buy": 6,
-     "hold": 5,
-     "sell": 1,
-     "strongSell": 0
-    },
-    "targetMean": null
-   },
-   "fundamentalsUpdatedAt": "2026-11-12T15:12:46.000Z",
-   "score": 78,
-   "rating": "Kaufkandidat",
-   "areas": [
-    {
-     "key": "bewertung",
-     "label": "Bewertung",
-     "points": 5.4,
-     "missing": false,
-     "parts": [
-      {
-       "label": "KGV",
-       "value": "50,7",
-       "points": null
-      },
-      {
-       "label": "PEG",
-       "value": "3,02",
-       "points": 0,
-       "max": 10
-      },
-      {
-       "label": "FCF-Rendite",
-       "value": "4,3 %",
-       "points": 5.4,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "wachstum",
-     "label": "Wachstum",
-     "points": 16.7,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Umsatz p.a.",
-       "value": "30,2 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Gewinn p.a.",
-       "value": "16,8 %",
-       "points": 6.7,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "qualitaet",
-     "label": "Qualität",
-     "points": 20,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettomarge",
-       "value": "34,4 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Eigenkapitalrendite",
-       "value": "27,2 %",
-       "points": 10,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "bilanz",
-     "label": "Bilanz",
-     "points": 16.8,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettoverschuldung/EBITDA",
-       "value": "0,6",
-       "points": 16.8,
-       "max": 20
-      }
-     ]
-    },
-    {
-     "key": "analysten",
-     "label": "Analysten",
-     "points": 18.7,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Kaufempfehlungen",
-       "value": "76 % von 25",
-       "points": 9.3,
-       "max": 10
-      }
-     ]
-    }
-   ],
-   "summary": "Stark bei Wachstum, Qualität, Bilanz und Analysten. Schwach bei Bewertung.",
-   "metrics": {
-    "pe": 50.736000000000004,
-    "peg": 3.019281123542014,
-    "fcfYield": 4.29000429000429,
-    "netDebtEbitda": 0.635712,
-    "buyShare": 76,
-    "upside": null
-   }
-  },
-  {
-   "symbol": "AMZN",
-   "name": "Beispielwerte",
-   "currency": "USD",
-   "exchange": null,
-   "industry": null,
-   "logo": null,
-   "weburl": null,
-   "quote": {
-    "price": 237.68,
-    "change": -4.064328,
-    "changePct": -1.71,
-    "prevClose": 241.81503713500865,
-    "time": "2026-11-12T15:13:08.000Z"
-   },
-   "fundamentals": {
-    "priceAtFundamentals": 237.68,
-    "eps": 5.576201201201201,
-    "peMetric": null,
-    "pfcf": 31.894000000000002,
-    "epsGrowth": 7.8469999999999995,
-    "revenueGrowth": 23.973999999999997,
-    "netMargin": 27.112,
-    "roe": 51.199999999999996,
-    "netDebt": 72500,
-    "ebitda": 126220.12790306294,
-    "debtEquity": null,
-    "recommendation": {
-     "period": "2026-11-01",
-     "strongBuy": 11,
-     "buy": 10,
-     "hold": 6,
-     "sell": 1,
-     "strongSell": 0
-    },
-    "targetMean": null
-   },
-   "fundamentalsUpdatedAt": "2026-11-12T15:12:50.406Z",
-   "score": 72,
-   "rating": "Kaufkandidat",
-   "areas": [
-    {
-     "key": "bewertung",
-     "label": "Bewertung",
-     "points": 3.9,
-     "missing": false,
-     "parts": [
-      {
-       "label": "KGV",
-       "value": "42,6",
-       "points": null
-      },
-      {
-       "label": "PEG",
-       "value": "5,43",
-       "points": 0,
-       "max": 10
-      },
-      {
-       "label": "FCF-Rendite",
-       "value": "3,1 %",
-       "points": 3.9,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "wachstum",
-     "label": "Wachstum",
-     "points": 13.1,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Umsatz p.a.",
-       "value": "24,0 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Gewinn p.a.",
-       "value": "7,8 %",
-       "points": 3.1,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "qualitaet",
-     "label": "Qualität",
-     "points": 20,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettomarge",
-       "value": "27,1 %",
-       "points": 10,
-       "max": 10
-      },
-      {
-       "label": "Eigenkapitalrendite",
-       "value": "51,2 %",
-       "points": 10,
-       "max": 10
-      }
-     ]
-    },
-    {
-     "key": "bilanz",
-     "label": "Bilanz",
-     "points": 17.1,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Nettoverschuldung/EBITDA",
-       "value": "0,6",
-       "points": 17.1,
-       "max": 20
-      }
-     ]
-    },
-    {
-     "key": "analysten",
-     "label": "Analysten",
-     "points": 18.3,
-     "missing": false,
-     "parts": [
-      {
-       "label": "Kaufempfehlungen",
-       "value": "75 % von 28",
-       "points": 9.2,
-       "max": 10
-      }
-     ]
-    }
-   ],
-   "summary": "Stark bei Qualität, Bilanz und Analysten. Schwach bei Bewertung.",
-   "metrics": {
-    "pe": 42.624,
-    "peg": 5.431884796737608,
-    "fcfYield": 3.135385966012416,
-    "netDebtEbitda": 0.5743933333333333,
-    "buyShare": 75,
-    "upside": null
-   }
-  },
-  {
-   "symbol": "META",
-   "name": "Beispielwerte",
-   "currency": "USD",
-   "exchange": null,
-   "industry": null,
-   "logo": null,
-   "weburl": null,
-   "quote": {
-    "price": 295.92,
-    "change": -5.397580799999999,
-    "changePct": -1.8239999999999998,
-    "prevClose": 301.41786179921775,
-    "time": "2026-11-12T15:13:09.000Z"
-   },
-   "fundamentals": {
-    "priceAtFundamentals": 295.92,
-    "eps": 7.0943613348676635,
-    "peMetric": null,
-    "pfcf": 37.926,
-    "epsGrowth": 6.840000000000002,
-    "revenueGrowth": 23.271,
-    "netMargin": 26.294999999999998,
-    "roe": 18.805,
-    "netDebt": 66800,
-    "ebitda": 101378.75101378749,
-    "debtEquity": null,
-    "recommendation": {
-     "period": "2026-11-01",
-     "strongBuy": 11,
-     "buy": 12,
-     "hold": 8,
-     "sell": 2,
-     "strongSell": 0
-    },
-    "targetMean": null
-   },
-   "fundamentalsUpdatedAt": "2026-11-12T15:12:54.812Z",
-   "score": 67,
-   "rating": "Beobachten",
-   "areas": [
-    {
-     "key": "bewertung",
-     "label": "Bewertung",
-     "points": 3.3,
-     "missing": false,
-     "parts": [
-      {
-       "label": "KGV",
-       "value": "41,7",
-       "points": null
-      },
-      {
-       "label": "PEG",
-       "value": "6,10",
-       "points": 0,
+       "value": "2,95",
+       "points": 0.3,
        "max": 10
       },
       {
@@ -799,19 +73,19 @@
     {
      "key": "wachstum",
      "label": "Wachstum",
-     "points": 12.7,
+     "points": 9.3,
      "missing": false,
      "parts": [
       {
        "label": "Umsatz p.a.",
-       "value": "23,3 %",
-       "points": 10,
+       "value": "7,7 %",
+       "points": 3.9,
        "max": 10
       },
       {
        "label": "Gewinn p.a.",
-       "value": "6,8 %",
-       "points": 2.7,
+       "value": "13,5 %",
+       "points": 5.4,
        "max": 10
       }
      ]
@@ -819,19 +93,19 @@
     {
      "key": "qualitaet",
      "label": "Qualität",
-     "points": 17.5,
+     "points": 20,
      "missing": false,
      "parts": [
       {
        "label": "Nettomarge",
-       "value": "26,3 %",
+       "value": "27,6 %",
        "points": 10,
        "max": 10
       },
       {
        "label": "Eigenkapitalrendite",
-       "value": "18,8 %",
-       "points": 7.5,
+       "value": "127,6 %",
+       "points": 10,
        "max": 10
       }
      ]
@@ -839,13 +113,13 @@
     {
      "key": "bilanz",
      "label": "Bilanz",
-     "points": 16.7,
+     "points": 18.7,
      "missing": false,
      "parts": [
       {
        "label": "Nettoverschuldung/EBITDA",
-       "value": "0,7",
-       "points": 16.7,
+       "value": "0,3",
+       "points": 18.7,
        "max": 20
       }
      ]
@@ -853,90 +127,90 @@
     {
      "key": "analysten",
      "label": "Analysten",
-     "points": 16.6,
+     "points": 13.7,
      "missing": false,
      "parts": [
       {
        "label": "Kaufempfehlungen",
-       "value": "70 % von 33",
-       "points": 8.3,
+       "value": "61 % von 49",
+       "points": 6.9,
        "max": 10
       }
      ]
     }
    ],
-   "summary": "Stark bei Qualität, Bilanz und Analysten. Schwach bei Bewertung.",
+   "summary": "Stark bei Qualität und Bilanz. Schwach bei Bewertung.",
    "metrics": {
-    "pe": 41.712,
-    "peg": 6.098245614035087,
-    "fcfYield": 2.6367136001687497,
-    "netDebtEbitda": 0.6589152000000001,
-    "buyShare": 69.6969696969697,
+    "pe": 39.896373056994825,
+    "peg": 2.946556355760327,
+    "fcfYield": 2.646160685461464,
+    "netDebtEbitda": 0.2576575582087858,
+    "buyShare": 61.224489795918366,
     "upside": null
    }
   },
   {
-   "symbol": "ASML",
-   "name": "Beispielwerte",
+   "symbol": "MSFT",
+   "name": "Microsoft Corporation",
    "currency": "USD",
-   "exchange": null,
-   "industry": null,
-   "logo": null,
-   "weburl": null,
+   "exchange": "NASDAQ NMS - GLOBAL MARKET",
+   "industry": "Technology",
+   "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/MSFT.png",
+   "weburl": "https://www.microsoft.com/en-in/",
    "quote": {
-    "price": 41.68,
-    "change": -1.0128239999999997,
-    "changePct": -2.4299999999999997,
-    "prevClose": 42.718048580506306,
-    "time": "2026-11-12T15:13:10.000Z"
+    "price": 528.79,
+    "change": 7.665,
+    "changePct": 1.4709,
+    "prevClose": 521.125,
+    "time": "2026-11-12T16:29:44.000Z"
    },
    "fundamentals": {
-    "priceAtFundamentals": 41.68,
-    "eps": 1.130642361111111,
-    "peMetric": null,
-    "pfcf": 69.594,
-    "epsGrowth": 1.487,
-    "revenueGrowth": 19.534,
-    "netMargin": 21.952,
-    "roe": 47.295,
-    "netDebt": 36500,
-    "ebitda": 719769.6737044146,
-    "debtEquity": null,
+    "priceAtFundamentals": 528.79,
+    "eps": 19.1495,
+    "peMetric": 27.1328,
+    "pfcf": 64.5458,
+    "epsGrowth": 22.83,
+    "revenueGrowth": 16.12,
+    "netMargin": 41.17,
+    "roe": 33.21,
+    "netDebt": 86173,
+    "ebitda": 199604.105296,
+    "debtEquity": 0.2263,
     "recommendation": {
      "period": "2026-11-01",
-     "strongBuy": 9,
-     "buy": 25,
-     "hold": 15,
+     "strongBuy": 22,
+     "buy": 40,
+     "hold": 3,
      "sell": 0,
      "strongSell": 0
     },
     "targetMean": null
    },
-   "fundamentalsUpdatedAt": "2026-11-12T15:12:59.218Z",
-   "score": 67,
-   "rating": "Beobachten",
+   "fundamentalsUpdatedAt": "2026-11-12T16:30:00.162Z",
+   "score": 86,
+   "rating": "Kaufkandidat",
    "areas": [
     {
      "key": "bewertung",
      "label": "Bewertung",
-     "points": 1.8,
+     "points": 10.9,
      "missing": false,
      "parts": [
       {
        "label": "KGV",
-       "value": "36,9",
+       "value": "27,6",
        "points": null
       },
       {
        "label": "PEG",
-       "value": "24,79",
-       "points": 0,
+       "value": "1,21",
+       "points": 9,
        "max": 10
       },
       {
        "label": "FCF-Rendite",
-       "value": "1,4 %",
-       "points": 1.8,
+       "value": "1,5 %",
+       "points": 1.9,
        "max": 10
       }
      ]
@@ -944,19 +218,19 @@
     {
      "key": "wachstum",
      "label": "Wachstum",
-     "points": 10.4,
+     "points": 17.2,
      "missing": false,
      "parts": [
       {
        "label": "Umsatz p.a.",
-       "value": "19,5 %",
-       "points": 9.8,
+       "value": "16,1 %",
+       "points": 8.1,
        "max": 10
       },
       {
        "label": "Gewinn p.a.",
-       "value": "1,5 %",
-       "points": 0.6,
+       "value": "22,8 %",
+       "points": 9.1,
        "max": 10
       }
      ]
@@ -964,18 +238,163 @@
     {
      "key": "qualitaet",
      "label": "Qualität",
-     "points": 18.8,
+     "points": 20,
      "missing": false,
      "parts": [
       {
        "label": "Nettomarge",
-       "value": "22,0 %",
-       "points": 8.8,
+       "value": "41,2 %",
+       "points": 10,
        "max": 10
       },
       {
        "label": "Eigenkapitalrendite",
-       "value": "47,3 %",
+       "value": "33,2 %",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "bilanz",
+     "label": "Bilanz",
+     "points": 17.8,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettoverschuldung/EBITDA",
+       "value": "0,4",
+       "points": 17.8,
+       "max": 20
+      }
+     ]
+    },
+    {
+     "key": "analysten",
+     "label": "Analysten",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Kaufempfehlungen",
+       "value": "95 % von 65",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    }
+   ],
+   "summary": "Stark bei Wachstum, Qualität, Bilanz und Analysten.",
+   "metrics": {
+    "pe": 27.613775816600953,
+    "peg": 1.2095390195620217,
+    "fcfYield": 1.5492874826867125,
+    "netDebtEbitda": 0.4317195774716708,
+    "buyShare": 95.38461538461539,
+    "upside": null
+   }
+  },
+  {
+   "symbol": "NVDA",
+   "name": "NVIDIA Corporation",
+   "currency": "USD",
+   "exchange": "NASDAQ NMS - GLOBAL MARKET",
+   "industry": "Semiconductors",
+   "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/942959144056.png",
+   "weburl": "https://www.nvidia.com",
+   "quote": {
+    "price": 165.62,
+    "change": -8.11,
+    "changePct": -4.6682,
+    "prevClose": 173.73,
+    "time": "2026-11-12T16:29:45.000Z"
+   },
+   "fundamentals": {
+    "priceAtFundamentals": 165.62,
+    "eps": 7.9108,
+    "peMetric": 21.7074,
+    "pfcf": 32.9661,
+    "epsGrowth": 204.08,
+    "revenueGrowth": 100.05,
+    "netMargin": 63.66,
+    "roe": 110.11,
+    "netDebt": 10923,
+    "ebitda": 198694.86000000002,
+    "debtEquity": 0.1457,
+    "recommendation": {
+     "period": "2026-11-01",
+     "strongBuy": 25,
+     "buy": 41,
+     "hold": 2,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "targetMean": null
+   },
+   "fundamentalsUpdatedAt": "2026-11-12T16:30:04.751Z",
+   "score": 94,
+   "rating": "Kaufkandidat",
+   "areas": [
+    {
+     "key": "bewertung",
+     "label": "Bewertung",
+     "points": 13.8,
+     "missing": false,
+     "parts": [
+      {
+       "label": "KGV",
+       "value": "20,9",
+       "points": null
+      },
+      {
+       "label": "PEG",
+       "value": "0,10",
+       "points": 10,
+       "max": 10
+      },
+      {
+       "label": "FCF-Rendite",
+       "value": "3,0 %",
+       "points": 3.8,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "wachstum",
+     "label": "Wachstum",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Umsatz p.a.",
+       "value": "100,1 %",
+       "points": 10,
+       "max": 10
+      },
+      {
+       "label": "Gewinn p.a.",
+       "value": "204,1 %",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "qualitaet",
+     "label": "Qualität",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettomarge",
+       "value": "63,7 %",
+       "points": 10,
+       "max": 10
+      },
+      {
+       "label": "Eigenkapitalrendite",
+       "value": "110,1 %",
        "points": 10,
        "max": 10
       }
@@ -998,90 +417,90 @@
     {
      "key": "analysten",
      "label": "Analysten",
-     "points": 16.5,
+     "points": 20,
      "missing": false,
      "parts": [
       {
        "label": "Kaufempfehlungen",
-       "value": "69 % von 49",
-       "points": 8.2,
+       "value": "96 % von 69",
+       "points": 10,
        "max": 10
       }
      ]
     }
    ],
-   "summary": "Stark bei Qualität, Bilanz und Analysten. Schwach bei Bewertung.",
+   "summary": "Stark bei Wachstum, Qualität, Bilanz und Analysten.",
    "metrics": {
-    "pe": 36.864000000000004,
-    "peg": 24.790854068594488,
-    "fcfYield": 1.436905480357502,
-    "netDebtEbitda": 0.05071066666666666,
-    "buyShare": 69.38775510204081,
+    "pe": 20.935935682863935,
+    "peg": 0.1025869055412776,
+    "fcfYield": 3.033419179096102,
+    "netDebtEbitda": 0.054973742149142656,
+    "buyShare": 95.65217391304348,
     "upside": null
    }
   },
   {
-   "symbol": "KO",
-   "name": "Beispielwerte",
+   "symbol": "GOOGL",
+   "name": "Alphabet Inc.",
    "currency": "USD",
-   "exchange": null,
-   "industry": null,
-   "logo": null,
-   "weburl": null,
+   "exchange": "NASDAQ NMS - GLOBAL MARKET",
+   "industry": "Media",
+   "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/GOOG.png",
+   "weburl": "https://abc.xyz/",
    "quote": {
-    "price": 560.24,
-    "change": 10.117934400000001,
-    "changePct": 1.806,
-    "prevClose": 550.3015539359174,
-    "time": "2026-11-12T15:13:11.000Z"
+    "price": 298.75,
+    "change": 5.3,
+    "changePct": 1.8061,
+    "prevClose": 293.45,
+    "time": "2026-11-12T16:29:44.000Z"
    },
    "fundamentals": {
-    "priceAtFundamentals": 560.24,
-    "eps": 24.62376933895921,
-    "peMetric": null,
-    "pfcf": 65.30199999999999,
-    "epsGrowth": 38.905,
-    "revenueGrowth": 8.655999999999999,
-    "netMargin": 9.31,
-    "roe": 30.630000000000003,
-    "netDebt": -51700,
-    "ebitda": 53548.479223190065,
-    "debtEquity": null,
+    "priceAtFundamentals": 298.75,
+    "eps": 19.185399999999998,
+    "peMetric": 15.3389,
+    "pfcf": 56.1129,
+    "epsGrowth": 33.35,
+    "revenueGrowth": 12.51,
+    "netMargin": 50.03,
+    "roe": 42.620000000000005,
+    "netDebt": 68768,
+    "ebitda": 166667.2992,
+    "debtEquity": 0.1846,
     "recommendation": {
      "period": "2026-11-01",
-     "strongBuy": 5,
-     "buy": 23,
-     "hold": 14,
-     "sell": 4,
+     "strongBuy": 20,
+     "buy": 41,
+     "hold": 7,
+     "sell": 0,
      "strongSell": 0
     },
     "targetMean": null
    },
-   "fundamentalsUpdatedAt": "2026-11-12T15:13:03.624Z",
-   "score": 74,
+   "fundamentalsUpdatedAt": "2026-11-12T16:30:09.484Z",
+   "score": 86,
    "rating": "Kaufkandidat",
    "areas": [
     {
      "key": "bewertung",
      "label": "Bewertung",
-     "points": 11.9,
+     "points": 12.2,
      "missing": false,
      "parts": [
       {
        "label": "KGV",
-       "value": "22,8",
+       "value": "15,6",
        "points": null
       },
       {
        "label": "PEG",
-       "value": "0,58",
+       "value": "0,47",
        "points": 10,
        "max": 10
       },
       {
        "label": "FCF-Rendite",
-       "value": "1,5 %",
-       "points": 1.9,
+       "value": "1,8 %",
+       "points": 2.2,
        "max": 10
       }
      ]
@@ -1089,18 +508,18 @@
     {
      "key": "wachstum",
      "label": "Wachstum",
-     "points": 14.3,
+     "points": 16.3,
      "missing": false,
      "parts": [
       {
        "label": "Umsatz p.a.",
-       "value": "8,7 %",
-       "points": 4.3,
+       "value": "12,5 %",
+       "points": 6.3,
        "max": 10
       },
       {
        "label": "Gewinn p.a.",
-       "value": "38,9 %",
+       "value": "33,4 %",
        "points": 10,
        "max": 10
       }
@@ -1109,18 +528,453 @@
     {
      "key": "qualitaet",
      "label": "Qualität",
-     "points": 13.7,
+     "points": 20,
      "missing": false,
      "parts": [
       {
        "label": "Nettomarge",
-       "value": "9,3 %",
-       "points": 3.7,
+       "value": "50,0 %",
+       "points": 10,
        "max": 10
       },
       {
        "label": "Eigenkapitalrendite",
-       "value": "30,6 %",
+       "value": "42,6 %",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "bilanz",
+     "label": "Bilanz",
+     "points": 17.9,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettoverschuldung/EBITDA",
+       "value": "0,4",
+       "points": 17.9,
+       "max": 20
+      }
+     ]
+    },
+    {
+     "key": "analysten",
+     "label": "Analysten",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Kaufempfehlungen",
+       "value": "90 % von 68",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    }
+   ],
+   "summary": "Stark bei Wachstum, Qualität, Bilanz und Analysten.",
+   "metrics": {
+    "pe": 15.571736841556602,
+    "peg": 0.46691864592373616,
+    "fcfYield": 1.7821214016741247,
+    "netDebtEbitda": 0.41260643407606135,
+    "buyShare": 89.70588235294117,
+    "upside": null
+   }
+  },
+  {
+   "symbol": "AMZN",
+   "name": "Amazon.com Inc",
+   "currency": "USD",
+   "exchange": "NASDAQ NMS - GLOBAL MARKET",
+   "industry": "Retail",
+   "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/AMZN.png",
+   "weburl": "https://www.amazon.com/",
+   "quote": {
+    "price": 270.04,
+    "change": 3.87,
+    "changePct": 1.454,
+    "prevClose": 266.17,
+    "time": "2026-11-12T16:29:43.000Z"
+   },
+   "fundamentals": {
+    "priceAtFundamentals": 270.04,
+    "eps": 12.3716,
+    "peMetric": 21.3545,
+    "pfcf": 183.3323,
+    "epsGrowth": 74.76,
+    "revenueGrowth": 11.73,
+    "netMargin": 16.9,
+    "roe": 26.71,
+    "netDebt": 117342,
+    "ebitda": 182384.151066,
+    "debtEquity": 0.2821,
+    "recommendation": {
+     "period": "2026-11-01",
+     "strongBuy": 19,
+     "buy": 48,
+     "hold": 3,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "targetMean": null
+   },
+   "fundamentalsUpdatedAt": "2026-11-12T16:30:13.884Z",
+   "score": 80,
+   "rating": "Kaufkandidat",
+   "areas": [
+    {
+     "key": "bewertung",
+     "label": "Bewertung",
+     "points": 10.7,
+     "missing": false,
+     "parts": [
+      {
+       "label": "KGV",
+       "value": "21,8",
+       "points": null
+      },
+      {
+       "label": "PEG",
+       "value": "0,29",
+       "points": 10,
+       "max": 10
+      },
+      {
+       "label": "FCF-Rendite",
+       "value": "0,5 %",
+       "points": 0.7,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "wachstum",
+     "label": "Wachstum",
+     "points": 15.9,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Umsatz p.a.",
+       "value": "11,7 %",
+       "points": 5.9,
+       "max": 10
+      },
+      {
+       "label": "Gewinn p.a.",
+       "value": "74,8 %",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "qualitaet",
+     "label": "Qualität",
+     "points": 16.8,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettomarge",
+       "value": "16,9 %",
+       "points": 6.8,
+       "max": 10
+      },
+      {
+       "label": "Eigenkapitalrendite",
+       "value": "26,7 %",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "bilanz",
+     "label": "Bilanz",
+     "points": 16.8,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettoverschuldung/EBITDA",
+       "value": "0,6",
+       "points": 16.8,
+       "max": 20
+      }
+     ]
+    },
+    {
+     "key": "analysten",
+     "label": "Analysten",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Kaufempfehlungen",
+       "value": "96 % von 70",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    }
+   ],
+   "summary": "Stark bei Wachstum, Qualität, Bilanz und Analysten.",
+   "metrics": {
+    "pe": 21.82741116751269,
+    "peg": 0.2919664415130108,
+    "fcfYield": 0.5454576198520391,
+    "netDebtEbitda": 0.6433782722575332,
+    "buyShare": 95.71428571428572,
+    "upside": null
+   }
+  },
+  {
+   "symbol": "META",
+   "name": "Meta Platforms, Inc.",
+   "currency": "USD",
+   "exchange": "NASDAQ NMS - GLOBAL MARKET",
+   "industry": "Media",
+   "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/FB.png",
+   "weburl": "https://www.meta.com/",
+   "quote": {
+    "price": 626,
+    "change": -2.77,
+    "changePct": -0.4405,
+    "prevClose": 628.77,
+    "time": "2026-11-12T16:30:07.000Z"
+   },
+   "fundamentals": {
+    "priceAtFundamentals": 626,
+    "eps": 29.3369,
+    "peMetric": 21.3596,
+    "pfcf": 39.2251,
+    "epsGrowth": 39.86,
+    "revenueGrowth": 19.89,
+    "netMargin": 31.15,
+    "roe": 30.270000000000003,
+    "netDebt": 69700,
+    "ebitda": 105518.16945999999,
+    "debtEquity": 0.2971,
+    "recommendation": {
+     "period": "2026-11-01",
+     "strongBuy": 20,
+     "buy": 41,
+     "hold": 7,
+     "sell": 1,
+     "strongSell": 0
+    },
+    "targetMean": null
+   },
+   "fundamentalsUpdatedAt": "2026-11-12T16:30:18.288Z",
+   "score": 90,
+   "rating": "Kaufkandidat",
+   "areas": [
+    {
+     "key": "bewertung",
+     "label": "Bewertung",
+     "points": 13.2,
+     "missing": false,
+     "parts": [
+      {
+       "label": "KGV",
+       "value": "21,3",
+       "points": null
+      },
+      {
+       "label": "PEG",
+       "value": "0,54",
+       "points": 10,
+       "max": 10
+      },
+      {
+       "label": "FCF-Rendite",
+       "value": "2,5 %",
+       "points": 3.2,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "wachstum",
+     "label": "Wachstum",
+     "points": 19.9,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Umsatz p.a.",
+       "value": "19,9 %",
+       "points": 9.9,
+       "max": 10
+      },
+      {
+       "label": "Gewinn p.a.",
+       "value": "39,9 %",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "qualitaet",
+     "label": "Qualität",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettomarge",
+       "value": "31,2 %",
+       "points": 10,
+       "max": 10
+      },
+      {
+       "label": "Eigenkapitalrendite",
+       "value": "30,3 %",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "bilanz",
+     "label": "Bilanz",
+     "points": 16.7,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettoverschuldung/EBITDA",
+       "value": "0,7",
+       "points": 16.7,
+       "max": 20
+      }
+     ]
+    },
+    {
+     "key": "analysten",
+     "label": "Analysten",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Kaufempfehlungen",
+       "value": "88 % von 69",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    }
+   ],
+   "summary": "Stark bei Wachstum, Qualität, Bilanz und Analysten.",
+   "metrics": {
+    "pe": 21.338314545844995,
+    "peg": 0.535331523980055,
+    "fcfYield": 2.5493880194059417,
+    "netDebtEbitda": 0.6605497456665224,
+    "buyShare": 88.40579710144928,
+    "upside": null
+   }
+  },
+  {
+   "symbol": "ASML",
+   "name": "ASML Holding NV",
+   "currency": "EUR",
+   "exchange": "NYSE EURONEXT - EURONEXT AMSTERDAM",
+   "industry": "Semiconductors",
+   "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/ASML.AS.png",
+   "weburl": "https://www.asml.com/en/",
+   "quote": {
+    "price": 1526.88,
+    "change": -7.54,
+    "changePct": -0.4914,
+    "prevClose": 1534.42,
+    "time": "2026-11-12T16:30:02.000Z"
+   },
+   "fundamentals": {
+    "priceAtFundamentals": 1526.88,
+    "eps": 26.964399999999998,
+    "peMetric": 49.9046,
+    "pfcf": 46.2796,
+    "epsGrowth": 17.79,
+    "revenueGrowth": 15.55,
+    "netMargin": 29.49,
+    "roe": 41.52,
+    "netDebt": -2952.2000000000116,
+    "ebitda": 14181.952995,
+    "debtEquity": 0.1431,
+    "recommendation": {
+     "period": "2026-11-01",
+     "strongBuy": 9,
+     "buy": 27,
+     "hold": 4,
+     "sell": 2,
+     "strongSell": 0
+    },
+    "targetMean": null
+   },
+   "fundamentalsUpdatedAt": "2026-11-12T16:30:22.684Z",
+   "score": 78,
+   "rating": "Kaufkandidat",
+   "areas": [
+    {
+     "key": "bewertung",
+     "label": "Bewertung",
+     "points": 2.7,
+     "missing": false,
+     "parts": [
+      {
+       "label": "KGV",
+       "value": "56,6",
+       "points": null
+      },
+      {
+       "label": "PEG",
+       "value": "3,18",
+       "points": 0,
+       "max": 10
+      },
+      {
+       "label": "FCF-Rendite",
+       "value": "2,2 %",
+       "points": 2.7,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "wachstum",
+     "label": "Wachstum",
+     "points": 14.9,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Umsatz p.a.",
+       "value": "15,6 %",
+       "points": 7.8,
+       "max": 10
+      },
+      {
+       "label": "Gewinn p.a.",
+       "value": "17,8 %",
+       "points": 7.1,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "qualitaet",
+     "label": "Qualität",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettomarge",
+       "value": "29,5 %",
+       "points": 10,
+       "max": 10
+      },
+      {
+       "label": "Eigenkapitalrendite",
+       "value": "41,5 %",
        "points": 10,
        "max": 10
       }
@@ -1134,7 +988,7 @@
      "parts": [
       {
        "label": "Nettoverschuldung/EBITDA",
-       "value": "-1,0 (Nettocash)",
+       "value": "-0,2 (Nettocash)",
        "points": 20,
        "max": 20
       }
@@ -1143,25 +997,170 @@
     {
      "key": "analysten",
      "label": "Analysten",
-     "points": 13.6,
+     "points": 20,
      "missing": false,
      "parts": [
       {
        "label": "Kaufempfehlungen",
-       "value": "61 % von 46",
-       "points": 6.8,
+       "value": "86 % von 42",
+       "points": 10,
        "max": 10
       }
      ]
     }
    ],
-   "summary": "Stark bei Bilanz.",
+   "summary": "Stark bei Qualität, Bilanz und Analysten. Schwach bei Bewertung.",
    "metrics": {
-    "pe": 22.752000000000002,
-    "peg": 0.5848091504947951,
-    "fcfYield": 1.5313466662583077,
-    "netDebtEbitda": -0.9654802666666666,
-    "buyShare": 60.86956521739131,
+    "pe": 56.62577324175581,
+    "peg": 3.1830114244944245,
+    "fcfYield": 2.1607792634335645,
+    "netDebtEbitda": -0.20816596988023028,
+    "buyShare": 85.71428571428571,
+    "upside": null
+   }
+  },
+  {
+   "symbol": "KO",
+   "name": "Coca-Cola Co",
+   "currency": "USD",
+   "exchange": "NEW YORK STOCK EXCHANGE, INC.",
+   "industry": "Beverages",
+   "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/KO.png",
+   "weburl": "https://www.coca-colacompany.com/",
+   "quote": {
+    "price": 97.81,
+    "change": 0.24,
+    "changePct": 0.246,
+    "prevClose": 97.57,
+    "time": "2026-11-12T16:30:06.000Z"
+   },
+   "fundamentals": {
+    "priceAtFundamentals": 97.81,
+    "eps": 3.3918,
+    "peMetric": 28.6921,
+    "pfcf": 29.3892,
+    "epsGrowth": 11.48,
+    "revenueGrowth": 3.69,
+    "netMargin": 28.65,
+    "roe": 42,
+    "netDebt": 28165,
+    "ebitda": 17081.12414,
+    "debtEquity": 1.1136,
+    "recommendation": {
+     "period": "2026-11-01",
+     "strongBuy": 8,
+     "buy": 20,
+     "hold": 7,
+     "sell": 0,
+     "strongSell": 0
+    },
+    "targetMean": null
+   },
+   "fundamentalsUpdatedAt": "2026-11-12T16:30:27.088Z",
+   "score": 65,
+   "rating": "Beobachten",
+   "areas": [
+    {
+     "key": "bewertung",
+     "label": "Bewertung",
+     "points": 6.7,
+     "missing": false,
+     "parts": [
+      {
+       "label": "KGV",
+       "value": "28,8",
+       "points": null
+      },
+      {
+       "label": "PEG",
+       "value": "2,51",
+       "points": 2.4,
+       "max": 10
+      },
+      {
+       "label": "FCF-Rendite",
+       "value": "3,4 %",
+       "points": 4.3,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "wachstum",
+     "label": "Wachstum",
+     "points": 6.4,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Umsatz p.a.",
+       "value": "3,7 %",
+       "points": 1.8,
+       "max": 10
+      },
+      {
+       "label": "Gewinn p.a.",
+       "value": "11,5 %",
+       "points": 4.6,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "qualitaet",
+     "label": "Qualität",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettomarge",
+       "value": "28,7 %",
+       "points": 10,
+       "max": 10
+      },
+      {
+       "label": "Eigenkapitalrendite",
+       "value": "42,0 %",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    },
+    {
+     "key": "bilanz",
+     "label": "Bilanz",
+     "points": 11.8,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Nettoverschuldung/EBITDA",
+       "value": "1,6",
+       "points": 11.8,
+       "max": 20
+      }
+     ]
+    },
+    {
+     "key": "analysten",
+     "label": "Analysten",
+     "points": 20,
+     "missing": false,
+     "parts": [
+      {
+       "label": "Kaufempfehlungen",
+       "value": "80 % von 35",
+       "points": 10,
+       "max": 10
+      }
+     ]
+    }
+   ],
+   "summary": "Stark bei Qualität und Analysten. Schwach bei Bewertung und Wachstum.",
+   "metrics": {
+    "pe": 28.837195589362583,
+    "peg": 2.5119508353103295,
+    "fcfYield": 3.4026104827623755,
+    "netDebtEbitda": 1.6488961598285066,
+    "buyShare": 80,
     "upside": null
    }
   }
